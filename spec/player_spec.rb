@@ -111,5 +111,11 @@ describe Player do
     expect(player.deck.count).to eq(0)
   end
 
+  it 'total_score' do
+    player = Player.new('joe')
+    player.discard << Card.new("Province",8,6,0)
+    player.discard << Card.new("Dutchy",5,3,0)
 
+    expect(player.total_score).to eq(12)
+  end
 end
