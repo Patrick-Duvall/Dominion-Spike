@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :coppers, :silvers, :golds, :estates, :dutchys, :provinces, :player1, :player2
+  attr_accessor :coppers, :silvers, :golds, :estates, :dutchys, :provinces, :player1, :player2, :players
   def initialize(player_name1, player_name2)
     @player1 = Player.new(player_name1)
     @player2 = Player.new(player_name2)
@@ -15,10 +15,15 @@ class Game
   end
 
   def start_game
-    players.each{|player| player.draw_hand}
+    @players.each{|player| player.draw_hand}
   end
 
   def current_player
     @players[0]
+  end
+
+  def next_turn
+    current_player.end_turn
+    @players.rotate!
   end
 end
