@@ -62,6 +62,15 @@ class Player
     @buys_available = 1
   end
 
+  def total_score
+    clear_play_area
+    discard_hand
+    reshuffle_discard
+    @deck.map do |card|
+      card.vp
+    end.sum
+  end
+
   private
 
   def get_basic_deck
