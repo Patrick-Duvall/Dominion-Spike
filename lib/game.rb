@@ -32,9 +32,21 @@ class Game
 
   def game_over?
     if @provinces == []
-      return "Game over!"
+      return final_score
     else
       false
     end
+  end
+
+  def final_score
+    scores = {}
+    @players.each do |player|
+      scores[player.name] = player.total_score
+    end
+    winner = scores.max_by do |name, score|
+      score
+    end
+    loser = scores.values.min
+    return "#{winner[0]} wins! #{winner[1]}-#{loser}"
   end
 end
