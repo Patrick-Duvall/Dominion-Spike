@@ -52,6 +52,15 @@ class Player
     end
   end
 
+  def end_turn
+    clear_play_area
+    discard_hand
+    draw_hand
+    @actions_available = 1
+    @coins_available = 1
+    @buys_available = 1
+  end
+
   private
 
   def get_basic_deck

@@ -51,12 +51,14 @@ describe Player do
       player.coins_available = 5
       player.buys_available = 0
       silver = Card.new("Silver", 3, 0, 2)
+      expect(player.buy_card(silver)).to eq("Can't buy")
     end
     it "cant buy not enough coins " do
       player = Player.new('joe')
       player.coins_available = 2
       player.buys_available = 1
       silver = Card.new("Silver", 3, 0, 2)
+      expect(player.buy_card(silver)).to eq("Can't buy")
     end
   end
 
@@ -92,4 +94,22 @@ describe Player do
     expect(player.in_play.count).to eq(0)
     expect(player.discard.count).to eq(1)
   end
+
+  it 'ends turn' do
+    player = Player.new('joe')
+    player.draw_hand();
+    copper = player.hand.find{|card| card.name == "Copper"}
+    player.play_card(copper)
+    player.coins_available = 4
+    player.buys_available = 1
+    silver = Card.new("Silver", 3, 0, 2)
+    player.buy_card(silver)
+    player.end_turn
+    expect(player.in_play.count).to eq(0)
+    expect(player.discard.count).to eq(6)
+    expect(player.hand.count).to eq(5)
+    expect(player.deck.count).to eq(0)
+  end
+
+
 end
