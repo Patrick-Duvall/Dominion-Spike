@@ -2,7 +2,6 @@ require "player.rb"
 require "card.rb"
 require "game.rb"
 
-
 describe Game do
 
   before :each do
@@ -26,16 +25,16 @@ describe Game do
   end
 
   it "starts a game" do
-  game = Game.new('pam', 'jan')
-  game.start_game
-  game.players.each do |player|
-    expect(player.hand.count).to eq(5)
-    expect(player.deck.count).to eq(5)
-    expect(player.buys_available).to eq(1)
-    expect(player.coins_available).to eq(0)
-    expect(player.actions_available).to eq(1)
-  end
+    game = Game.new('pam', 'jan')
+    game.start_game
+    game.players.each do |player|
+      expect(player.hand.count).to eq(5)
+      expect(player.deck.count).to eq(5)
+      expect(player.buys_available).to eq(1)
+      expect(player.coins_available).to eq(0)
+      expect(player.actions_available).to eq(1)
+    end
   end
 
-
-  end
+  
+end
