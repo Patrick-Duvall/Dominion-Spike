@@ -36,5 +36,12 @@ describe Game do
     end
   end
 
-  
+  it 'starts with a current player' do
+    expect(@game.current_player.name).to eq('Jim')
+  end
+
+  it 'can go to the next turn with the next player' do
+    @game.next_turn
+    expect(@game.current_player.name).to eq('Joe')
+  end
 end
