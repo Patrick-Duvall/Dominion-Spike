@@ -6,9 +6,9 @@ class Player
     @discard = []
     @hand = []
     @in_play = []
-    @actions_available = 0
+    @actions_available = 1
     @coins_available = 0
-    @buys_available = 0
+    @buys_available = 1
   end
 
   def reshuffle_discard
@@ -57,7 +57,7 @@ class Player
     discard_hand
     draw_hand
     @actions_available = 1
-    @coins_available = 1
+    @coins_available = 0
     @buys_available = 1
   end
 
