@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :name, :deck, :discard, :hand, :in_play, :coins_available, :buys_available, :actions_available
+  attr_accessor :name, :deck, :discard, :hand, :in_play, :coins_available, :buys_available, :actions_available, :game
   def initialize(name)
     @name = name
     @deck = get_basic_deck()
@@ -9,6 +9,7 @@ class Player
     @actions_available = 1
     @coins_available = 0
     @buys_available = 1
+    @game = nil
   end
 
   def reshuffle_discard
