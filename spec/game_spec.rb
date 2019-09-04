@@ -44,4 +44,9 @@ describe Game do
     @game.next_turn
     expect(@game.current_player.name).to eq('Joe')
   end
+
+  it 'can end the game via provinces' do
+    @game.provinces = []
+    expect(@game.next_turn).to eq('Game over!')
+  end
 end
