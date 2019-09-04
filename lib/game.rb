@@ -24,6 +24,17 @@ class Game
 
   def next_turn
     current_player.end_turn
+    return game_over? if game_over?
     @players.rotate!
+  end
+
+  private
+
+  def game_over?
+    if @provinces == []
+      return "Game over!"
+    else
+      false
+    end
   end
 end
