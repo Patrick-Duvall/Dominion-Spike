@@ -47,6 +47,18 @@ describe Game do
 
   it 'can end the game via provinces' do
     @game.provinces = []
-    expect(@game.next_turn).to eq('Game over!')
+    expect(@game.next_turn).to eq("#{@game.player1.name} wins! 3-3")
+  end
+
+  it 'can determine winner of game' do
+    @game.provinces = []
+    @game.player1.discard << Card.new("Province",8,6,0)
+    @game.player1.discard << Card.new("Duchy",5,3,0)
+    @game.player1.discard << Card.new("Estate",2,1,0)
+    @game.player1.discard << Card.new("Estate",2,1,0)
+    @game.player2.discard << Card.new("Estate",2,1,0)
+    @game.player2.discard << Card.new("Estate",2,1,0)
+
+    expect(@game.next_turn).to eq("#{@game.player1.name} wins! 14-5")
   end
 end
